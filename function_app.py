@@ -20,9 +20,9 @@ data_ingestion = DataIngestion()
 bsm = BlobStorageManager()
 
 
-
-@app.timer_trigger(schedule=SCHEDULE, arg_name="myTimer", run_on_startup=True,
-              use_monitor=False) 
+@app.timer_trigger(
+    schedule="0 0 */8 * * *", arg_name="myTimer", run_on_startup=False, use_monitor=False
+)
 def timer_trigger(myTimer: func.TimerRequest) -> None:
     """
     Función que se ejecuta cada cierto intervalo de tiempo para obener trnascripciones y metadata videos
