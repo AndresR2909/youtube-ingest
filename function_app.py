@@ -20,12 +20,12 @@ data_ingestion = DataIngestion()
 bsm = BlobStorageManager()
 
 
-@app.schedule(
-    schedule=SCHEDULE, arg_name="myTimer", run_on_startup=False, use_monitor=False
-)
+
+@app.timer_trigger(schedule=SCHEDULE, arg_name="myTimer", run_on_startup=True,
+              use_monitor=False) 
 def timer_trigger(myTimer: func.TimerRequest) -> None:
     """
-    Funcion que se ejecuta cada 5 minutos
+    Función que se ejecuta cada cierto intervalo de tiempo para obener trnascripciones y metadata videos
     """
     timestamp = datetime.now()
     logging.info("cron: %s", SCHEDULE)
@@ -68,7 +68,7 @@ def timer_trigger(myTimer: func.TimerRequest) -> None:
             s = buffer.getvalue()
             logging.info(s)
             # outputblob.set(data)
-            file_path = f"/youtube_transcripts/pending/youtube_delta_data_{timestamp.strftime('%Y-%m-%d-%H_%M')}.csv"
+            file_path = f"youtube_transcripts/pending/youtube_delta_data_{timestamp.strftime('%Y-%m-%d-%H_%M')}.csv"
             bsm.upload_blob(file_path, data)
         else:
             logging.info("No se ingestaron datos")
