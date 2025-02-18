@@ -19,7 +19,7 @@ class YouTubeScraper:
         }
 
     def _get_metadata_from_youtube_channel_url(self, url: str) -> dict:
-        """Funion para obtener metadata de url de canal de yotutube"""
+        """Funcion para obtener metadata de url de canal de yotutube"""
         # Crea el objeto yt-dlp y descarga la información del canal
         with yt_dlp.YoutubeDL(self.ydl_opts) as ydl:
             # Obtiene la información del canal
@@ -210,19 +210,15 @@ class YouTubeScraper:
         info_dict = self._get_metadata_from_youtube_channel_url(channel_url)
 
         if info_dict:
-            chanel_name = info_dict.get("channel")
-            chanel_id = info_dict.get("channel_id")
-            chanel_url = info_dict.get("channel_url")
-            logging.info(f"Extrayendo información de canal {chanel_name}")
+            channel_name = info_dict.get("channel")
+            channel_id = info_dict.get("channel_id")
+            channel_url = info_dict.get("channel_url")
+            logging.info(f"Extrayendo información de canal {channel_name}")
 
             for video in info_dict.get("entries", []):
                 video_url = video.get("url")
                 video_id = video.get("id")
-
-                if video_id:
-                    transcripts = self._download_transcripts(video_id)
-                else:
-                    transcripts = {}
+                transcripts = self._download_transcripts(video_id) if video_id else {}
 
                 metadata_dict = (
                     self._get_youtube_video_info_from_url(video_url)
@@ -237,9 +233,9 @@ class YouTubeScraper:
                         relativeDateText, publish_date, delta_days
                     ):
                         tmp_video_metadata = {
-                            "chanel_name": chanel_name,
-                            "chanel_id": chanel_id,
-                            "chanel_url": chanel_url,
+                            "channel_name": channel_name,
+                            "channel_id": channel_id,
+                            "channel_url": channel_url,
                             "video_id": video_id,
                             "title": video.get("title"),
                             "url": video_url,
@@ -282,20 +278,16 @@ class YouTubeScraper:
         info_dict = self._get_metadata_from_youtube_channel_url(channel_url)
 
         if info_dict:
-            chanel_name = info_dict.get("channel")
-            chanel_id = info_dict.get("channel_id")
-            chanel_url = info_dict.get("channel_url")
-            logging.info(f"Extrayendo información de canal {chanel_name}")
+            channel_name = info_dict.get("channel")
+            channel_id = info_dict.get("channel_id")
+            channel_url = info_dict.get("channel_url")
+            logging.info(f"Extrayendo información de canal {channel_name}")
 
             for video in info_dict.get("entries", []):
                 try:
                     video_url = video.get("url")
                     video_id = video.get("id")
-
-                    if video_id:
-                        transcripts = self._download_transcripts(video_id)
-                    else:
-                        transcripts = {}
+                    transcripts = self._download_transcripts(video_id) if video_id else {}
 
                     metadata_dict = (
                         self._get_youtube_video_info_from_url(video_url)
@@ -310,9 +302,9 @@ class YouTubeScraper:
                             relativeDateText, publish_date, delta
                         ):
                             tmp_video_metadata = {
-                                "chanel_name": chanel_name,
-                                "chanel_id": chanel_id,
-                                "chanel_url": chanel_url,
+                                "channel_name": channel_name,
+                                "channel_id": channel_id,
+                                "channel_url": channel_url,
                                 "video_id": video_id,
                                 "title": video.get("title"),
                                 "url": video_url,
