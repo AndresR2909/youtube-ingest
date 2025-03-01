@@ -3,8 +3,6 @@ from pytube import YouTube
 import yt_dlp
 import pandas as pd
 from datetime import datetime, timedelta
-import yt_dlp
-import pandas as pd
 import logging
 
 
