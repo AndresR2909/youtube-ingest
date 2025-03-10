@@ -352,6 +352,7 @@ class YouTubeScraper:
         channel_name = info_dict.get("channel")
         channel_id = info_dict.get("channel_id")
         channel_url = info_dict.get("channel_url")
+        channel_type = info_dict.get("webpage_url_basename")
         logging.info(f"Extrayendo información del canal {channel_name}")
 
         for video in info_dict.get("entries", []):
@@ -364,6 +365,7 @@ class YouTubeScraper:
                     "channel_name": channel_name,
                     "channel_id": channel_id,
                     "channel_url": channel_url,
+                    "channel_type": channel_type,
                     "video_id": video_id,
                     "title": video.get("title"),
                     "url": video_url,
