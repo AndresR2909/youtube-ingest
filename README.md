@@ -5,6 +5,13 @@
 ## Descripción del proyecto
 Este proyecto se encarga de extraer transcripciones e información de videos de canales predefinidos y almacenarlo en la zona landing de un Datalake Gen2 de Azure a través de una Azure Function que se dispara con un trigger de tiempo (cada x horas o x días).
 
+![datalake](https://github.com/user-attachments/assets/11c54820-4fbd-4722-8573-40c3675050f6)
+
+![landing](https://github.com/user-attachments/assets/213bc7e8-96bc-43f8-b540-534574e5e51f)
+
+![function app](https://github.com/user-attachments/assets/26adf62a-2d80-4e1d-a720-e881d7fd62fe)
+
+
 ## Instrucciones de instalación
 seguir las instrucciones de creacion de az function en [link](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-python)
 
