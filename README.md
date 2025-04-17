@@ -1,6 +1,7 @@
 # Extraccion de transcripciones y metadata canales YouTube
 
-![arquitectura](https://github.com/user-attachments/assets/a356cd16-5f48-434e-bc32-351a75327ca0)
+![arquitectura](https://github.com/user-attachments/assets/513269e2-8bbd-4a1d-9616-4ed1b848ffa0)
+
 
 ## Descripción del proyecto
 Este proyecto se encarga de extraer transcripciones e información de videos de canales predefinidos y almacenarlo en la zona landing de un Datalake Gen2 de Azure a través de una Azure Function que se dispara con un trigger de tiempo (cada x horas o x días).
